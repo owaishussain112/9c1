@@ -22,6 +22,15 @@ include("connection.php");
     </head>
 
     <body>
+        <?php
+        if(isset($_GET['id'])){
+            $id = $_GET['id'];
+            $query = $pdo->prepare("select * from marksheet where id = :pid");
+            $query->bindParam("pid",$id);
+            $query->execute();
+            $rowData = $query->fetch(PDO::FETCH_ASSOC);
+        }
+        ?>
        <div class="container">
         <form action="" method="post">
             <div class="mb-3">
@@ -33,6 +42,7 @@ include("connection.php");
                     class="form-control"
                     placeholder=""
                     aria-describedby="helpId"
+                    value="<?php echo $rowData['name']?>"
                 />
                 
             </div>
@@ -45,6 +55,7 @@ include("connection.php");
                     class="form-control"
                     placeholder=""
                     aria-describedby="helpId"
+                    value="<?php echo $rowData['math']?>"
                 />
                 
             </div>
@@ -57,6 +68,7 @@ include("connection.php");
                     class="form-control"
                     placeholder=""
                     aria-describedby="helpId"
+                    value="<?php echo $rowData['physics']?>"
                 />
                 
             </div>
@@ -69,6 +81,7 @@ include("connection.php");
                     class="form-control"
                     placeholder=""
                     aria-describedby="helpId"
+                    value="<?php echo $rowData['chemistry']?>"
                 />
                 
             </div>
@@ -81,6 +94,7 @@ include("connection.php");
                     class="form-control"
                     placeholder=""
                     aria-describedby="helpId"
+                    value="<?php echo $rowData['urdu']?>"
                 />
                 
             </div>
@@ -93,6 +107,7 @@ include("connection.php");
                     class="form-control"
                     placeholder="bnbvh"
                     aria-describedby="helpId"
+                    value="<?php echo $rowData['english']?>"
                 />
                 
             </div>
