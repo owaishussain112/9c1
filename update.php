@@ -33,6 +33,7 @@ include("connection.php");
         ?>
        <div class="container">
         <form action="" method="post">
+            <input type="hidden" name="id" value="<?php echo $rowData['id']?>">
             <div class="mb-3">
                 <label for="" class="form-label">Name</label>
                 <input
@@ -114,14 +115,15 @@ include("connection.php");
             <button
                 type="submit"
                 class="btn btn-primary"
-                name="marksheet"
+                name="updateMarksheet"
             >
                 Button
             </button>
             
         </form>
         <?php
-        if(isset($_POST['marksheet'])){
+        if(isset($_POST['updateMarksheet'])){
+            $id = $_POST['id'];
             $name = $_POST['name'];
             $maths = $_POST['maths'];
             $chemistry = $_POST['chemistry'];
@@ -157,7 +159,8 @@ include("connection.php");
                 $grade = "FAIL";
                 $remarks = "TRY AGAIN";
             }
-$query = $pdo -> prepare("insert into marksheet(name,math,physics,chemistry,urdu,english,obtained,percentag,grade,remarks) values(:pn,:pm,:pp,:pc,:pu,:pe,:po,:pper,:pg,:pr)");
+$query = $pdo -> prepare("update marksheet set name = :pn , chemistry=:pc, math = :pm, physics =:pp, urdu = :pu , english = :pe , obtained = :po, percentag = :pper , grade = :pg , remarks = :pr where id  = :pid");
+$query ->bindParam("pid",$id);
 $query->bindParam("pn",$name);
 $query->bindParam("pm",$maths);
 $query->bindParam("pp",$physics);
@@ -169,7 +172,9 @@ $query->bindParam("pper",$percentage);
 $query->bindParam("pg",$grade);
 $query->bindParam("pr",$remarks);
 $query->execute();
-echo "<script>alert('data send to db')</script>";
+echo "<script>alert('data updated to db');
+location.assign('view.php')
+</script>";
         }
         ?>
        </div>

@@ -71,13 +71,22 @@ foreach($row as $values){
                         <td><?php echo $values['grade'] ?></td>
                         <td><?php echo $values['remarks'] ?></td>
                         <td><a href="update.php?id=<?php echo $values['id']?>" class="btn btn-outline-success">Edit</a></td>
-                        <td><a href="" class="btn btn-outline-danger">Delete</a></td>
+                        <td><a href="?uid=<?php echo $values['id']?>" class="btn btn-outline-danger">Delete</a></td>
 
                     </tr>   
     
     
     <?php
 }
+ if(isset($_GET['uid'])){
+    $id = $_GET['uid'];
+    $query = $pdo -> prepare("delete from marksheet where id = :uid");
+    $query ->bindParam("uid", $id);
+    $query ->execute();
+    echo "<script>alert('data deleted successfully');
+    location.assign('view.php');
+    </script>";
+ }
     ?>
                     
                    
