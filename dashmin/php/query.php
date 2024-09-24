@@ -1,5 +1,6 @@
 <?php
 include("connection.php");
+$catImgAddress = "img/categories/";
 if(isset($_POST['addCategory'])){
     $catName = $_POST['catName'];
     $catImageName= $_FILES['catImage']['name'];
