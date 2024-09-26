@@ -27,7 +27,7 @@ include("components/header.php");
                                         <th scope="row"><?php echo $catValues['catId']?></th>
                                         <td><?php echo $catValues['catName']?></td>
                                         <td><img src="<?php echo $catImgAddress.$catValues['catImage']?>" width="80"></td>
-                                        <td><a href="" class="btn btn-outline-primary">Edit</a></td>
+                                        <td><a href="updatecategory.php?cid=<?php echo $catValues['catId']?>" class="btn btn-outline-primary">edit</a></td>
                                         <td><a href="" class="btn btn-outline-danger">Delete</a></td>
                                     </tr>
                                         <?php
