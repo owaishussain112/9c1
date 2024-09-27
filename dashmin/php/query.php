@@ -28,7 +28,7 @@ if(isset($_POST['addCategory'])){
         $catTmpName = $_FILES['catImage']['tmpName'];
         $extension = pathinfo(path: $catImageName,flags: PAYHINFO_EXTENSION);
         $imagPath = 'img/categories/'.$catImageName;
-        if($extention == "jpg" || $extension == "png" || $extension == "jpeg" $extension == "webp"){
+        if($extention == "jpg" || $extension == "png" || $extension == "jpeg" || $extension == "webp"){
             if(move_uploaded_file(from: $catTmpName,to: $imagPath)){
                 $query = $pdo -> prepare("update categories set catName = :pn,catImage =:pi where catId = :pid");
                 $query->bindParam("pid,$catId");
