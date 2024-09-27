@@ -27,7 +27,7 @@ if(isset($_GET['cid'])){
                                     <img src="<?php echo $catImgAddress.$row['catImage']?>"width="80" alt="">
                                 </div>
                                
-                                <button type="submit" class="btn btn-primary" name="addCategory">Add Category</button>
+                                <button type="submit" class="btn btn-primary" name="updateCategory">update Category</button>
                             </form>
                     </div>
                 </div>
