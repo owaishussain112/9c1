@@ -82,6 +82,9 @@ include("components/header.php");
                                     <select class="form-select" id="floatingSelect"
                                     aria-label="Floating label select example" name="proCatId">
                                     <option selected>Open this select menu</option>
+                                    <?php
+                                    $querycat = $pdo->query("select * from categories");
+                                    ?>
                                     <option value="1">One</option>
                                     <option value="2">Two</option>
                                     <option value="3">Three</option>
